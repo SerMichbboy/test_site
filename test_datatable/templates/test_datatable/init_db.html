@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Список исследований</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+</head>
+<body>
+    <div id="loader" class="loader" style="display: none;"></div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>ФИО пациента</th>
+                <th>Дата рождения пациента</th>
+                <th>Идентификатор исследования</th>
+                <th>Дата и время исследования</th>
+                <th>Модальность исследования</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.full_name }}</td>
+                <td>{{ patient.birth_date }}</td>
+                <td>{{ patient.study_id }}</td>
+                <td>{{ patient.study_datetime }}</td>
+                <td>{{ patient.modality }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
